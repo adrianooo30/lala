@@ -1,0 +1,8 @@
+playwright
+streamlit
+openai
+PyMuPDF
+python-dotenv
+sqlalchemy
+thefuzz
+pydantic
