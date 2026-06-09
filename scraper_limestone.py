@@ -54,7 +54,16 @@ async def scrape_limestone():
                     
                     text = await tbody.inner_text()
                     
-                    # See if inmate exists to prevent exact duplicates (optional, we'll just add for now)
+                    # See if inmate exists to prevent exact duplicates
+                    existing_inmate = session.query(Inmate).filter_by(
+                        county="Limestone",
+                        full_name=full_name
+                    ).first()
+                    
+                    if existing_inmate:
+                        print(f"Skipping existing inmate: {full_name}")
+                        continue
+
                     inmate = Inmate(
                         county="Limestone",
                         full_name=full_name,
